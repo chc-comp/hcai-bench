@@ -1,0 +1,141 @@
+(set-info :original "/tmp/sea-Wl0SEP/McCarthy91_false-unreach-call_true-no-overflow_true-termination.pp.ms.o.bc")
+(set-info :authors "SeaHorn v.0.1.0-rc3")
+(declare-rel verifier.error (Bool Bool Bool ))
+(declare-rel f91@_tail (Int ))
+(declare-rel f91@tailrecurse (Int Int ))
+(declare-rel f91@tailrecurse._crit_edge.split (Int Int ))
+(declare-rel f91 (Bool Bool Bool Int Int ))
+(declare-rel main@entry ())
+(declare-rel main@entry.split ())
+(declare-var f91@%_4_0 Int )
+(declare-var f91@%_br3_0 Bool )
+(declare-var f91@%.lcssa_1 Int )
+(declare-var f91@%x.tr1_2 Int )
+(declare-var f91@%_br_0 Bool )
+(declare-var f91@%x_0 Int )
+(declare-var f91@%_br1_0 Int )
+(declare-var f91@_tail_0 Bool )
+(declare-var f91@tailrecurse.preheader_0 Bool )
+(declare-var f91@tailrecurse_0 Bool )
+(declare-var f91@%x.tr1_0 Int )
+(declare-var f91@%x.tr1_1 Int )
+(declare-var f91@tailrecurse._crit_edge_0 Bool )
+(declare-var f91@%x.tr.lcssa_0 Int )
+(declare-var f91@%x.tr.lcssa_1 Int )
+(declare-var f91@tailrecurse._crit_edge.split_0 Bool )
+(declare-var f91@%_tail2_0 Int )
+(declare-var f91@tailrecurse_1 Bool )
+(declare-var f91@tailrecurse._crit_edge.loopexit_0 Bool )
+(declare-var f91@%.lcssa_0 Int )
+(declare-var main@%_0_0 Int )
+(declare-var main@%_1_0 Int )
+(declare-var main@%_2_0 Bool )
+(declare-var main@%_3_0 Bool )
+(declare-var main@%_4_0 Int )
+(declare-var main@%_5_0 Bool )
+(declare-var main@%or.cond.i_0 Bool )
+(declare-var main@entry_0 Bool )
+(declare-var main@entry.split_0 Bool )
+(rule (verifier.error false false false))
+(rule (verifier.error false true true))
+(rule (verifier.error true false true))
+(rule (verifier.error true true true))
+(rule (f91 true true true f91@%x_0 f91@%_br1_0))
+(rule (f91 false true true f91@%x_0 f91@%_br1_0))
+(rule (f91 false false false f91@%x_0 f91@%_br1_0))
+(rule (f91@_tail f91@%x_0))
+(rule (=> (and (f91@_tail f91@%x_0)
+         true
+         (= f91@%_br_0 (> f91@%x_0 100))
+         (=> f91@tailrecurse.preheader_0
+             (and f91@tailrecurse.preheader_0 f91@_tail_0))
+         (=> (and f91@tailrecurse.preheader_0 f91@_tail_0) (not f91@%_br_0))
+         (=> f91@tailrecurse_0
+             (and f91@tailrecurse_0 f91@tailrecurse.preheader_0))
+         f91@tailrecurse_0
+         (=> (and f91@tailrecurse_0 f91@tailrecurse.preheader_0)
+             (= f91@%x.tr1_0 f91@%x_0))
+         (=> (and f91@tailrecurse_0 f91@tailrecurse.preheader_0)
+             (= f91@%x.tr1_1 f91@%x.tr1_0)))
+    (f91@tailrecurse f91@%x.tr1_1 f91@%x_0)))
+(rule (let ((a!1 (and (f91@_tail f91@%x_0)
+                true
+                (= f91@%_br_0 (> f91@%x_0 100))
+                (=> f91@tailrecurse._crit_edge_0
+                    (and f91@tailrecurse._crit_edge_0 f91@_tail_0))
+                (=> (and f91@tailrecurse._crit_edge_0 f91@_tail_0) f91@%_br_0)
+                (=> (and f91@tailrecurse._crit_edge_0 f91@_tail_0)
+                    (= f91@%x.tr.lcssa_0 f91@%x_0))
+                (=> (and f91@tailrecurse._crit_edge_0 f91@_tail_0)
+                    (= f91@%x.tr.lcssa_1 f91@%x.tr.lcssa_0))
+                (=> f91@tailrecurse._crit_edge_0
+                    (= f91@%_br1_0 (+ f91@%x.tr.lcssa_1 (- 10))))
+                (=> f91@tailrecurse._crit_edge.split_0
+                    (and f91@tailrecurse._crit_edge.split_0
+                         f91@tailrecurse._crit_edge_0))
+                f91@tailrecurse._crit_edge.split_0)))
+  (=> a!1 (f91@tailrecurse._crit_edge.split f91@%_br1_0 f91@%x_0))))
+(rule (=> (and (f91@tailrecurse f91@%x.tr1_0 f91@%x_0)
+         true
+         (= f91@%_4_0 (+ f91@%x.tr1_0 11))
+         (f91 true false false f91@%_4_0 f91@%_tail2_0)
+         (= f91@%_br3_0 (> f91@%_tail2_0 100))
+         (=> f91@tailrecurse_1 (and f91@tailrecurse_1 f91@tailrecurse_0))
+         f91@tailrecurse_1
+         (=> (and f91@tailrecurse_1 f91@tailrecurse_0) (not f91@%_br3_0))
+         (=> (and f91@tailrecurse_1 f91@tailrecurse_0)
+             (= f91@%x.tr1_1 f91@%_tail2_0))
+         (=> (and f91@tailrecurse_1 f91@tailrecurse_0)
+             (= f91@%x.tr1_2 f91@%x.tr1_1)))
+    (f91@tailrecurse f91@%x.tr1_2 f91@%x_0)))
+(rule (let ((a!1 (and (f91@tailrecurse f91@%x.tr1_0 f91@%x_0)
+                true
+                (= f91@%_4_0 (+ f91@%x.tr1_0 11))
+                (f91 true false false f91@%_4_0 f91@%_tail2_0)
+                (= f91@%_br3_0 (> f91@%_tail2_0 100))
+                (=> f91@tailrecurse._crit_edge.loopexit_0
+                    (and f91@tailrecurse._crit_edge.loopexit_0
+                         f91@tailrecurse_0))
+                (=> (and f91@tailrecurse._crit_edge.loopexit_0
+                         f91@tailrecurse_0)
+                    f91@%_br3_0)
+                (=> (and f91@tailrecurse._crit_edge.loopexit_0
+                         f91@tailrecurse_0)
+                    (= f91@%.lcssa_0 f91@%_tail2_0))
+                (=> (and f91@tailrecurse._crit_edge.loopexit_0
+                         f91@tailrecurse_0)
+                    (= f91@%.lcssa_1 f91@%.lcssa_0))
+                (=> f91@tailrecurse._crit_edge_0
+                    (and f91@tailrecurse._crit_edge_0
+                         f91@tailrecurse._crit_edge.loopexit_0))
+                (=> (and f91@tailrecurse._crit_edge_0
+                         f91@tailrecurse._crit_edge.loopexit_0)
+                    (= f91@%x.tr.lcssa_0 f91@%.lcssa_1))
+                (=> (and f91@tailrecurse._crit_edge_0
+                         f91@tailrecurse._crit_edge.loopexit_0)
+                    (= f91@%x.tr.lcssa_1 f91@%x.tr.lcssa_0))
+                (=> f91@tailrecurse._crit_edge_0
+                    (= f91@%_br1_0 (+ f91@%x.tr.lcssa_1 (- 10))))
+                (=> f91@tailrecurse._crit_edge.split_0
+                    (and f91@tailrecurse._crit_edge.split_0
+                         f91@tailrecurse._crit_edge_0))
+                f91@tailrecurse._crit_edge.split_0)))
+  (=> a!1 (f91@tailrecurse._crit_edge.split f91@%_br1_0 f91@%x_0))))
+(rule (=> (f91@tailrecurse._crit_edge.split f91@%_br1_0 f91@%x_0)
+    (f91 true false false f91@%x_0 f91@%_br1_0)))
+(rule main@entry)
+(rule (=> (and main@entry
+         true
+         (f91 true false false main@%_0_0 main@%_1_0)
+         (= main@%_2_0 (= main@%_1_0 91))
+         (not main@%_2_0)
+         (= main@%_3_0 (> main@%_0_0 102))
+         (= main@%_4_0 (+ main@%_0_0 (- 10)))
+         (= main@%_5_0 (= main@%_1_0 main@%_4_0))
+         (= main@%or.cond.i_0 (and main@%_3_0 main@%_5_0))
+         (not main@%or.cond.i_0)
+         (=> main@entry.split_0 (and main@entry.split_0 main@entry_0))
+         main@entry.split_0)
+    main@entry.split))
+(query main@entry.split)
+
