@@ -5,7 +5,7 @@
 
 (declare-fun init (Int Int Int Int Int Int) Bool) ; l0 h k a[k] k2 a[k2]
 (declare-fun outerloop (Int Int Int Int Int Int Int) Bool) ; l0 l h k a[k] k2 a[k2]
-(declare-fun exit (Int Int Int Int Int Int) Bool) ; l0 h k a[k] k2 a[k2]
+(declare-fun exit_pred (Int Int Int Int Int Int) Bool) ; l0 h k a[k] k2 a[k2]
 
 (declare-fun read1 (Int Int Int Int Int Int Int) Bool) ; l0 l h k a[k] k2 a[k2]
 
@@ -29,7 +29,7 @@
 
 (assert (forall ((l0 Int) (l Int) (h Int) (k Int) (ak Int) (k2 Int) (ak2 Int))
   (=> (and (outerloop l0 l h k ak k2 ak2) (>= l (- h 1)))
-      (exit l0 h k ak k2 ak2))))
+      (exit_pred l0 h k ak k2 ak2))))
 
 (assert (forall ((l0 Int) (l Int) (h Int) (b Int) (k Int) (ak Int) (k2 Int) (ak2 Int))
   (=> (and (read1 l0 l h k ak k2 ak2)
@@ -209,11 +209,11 @@
 ; Final: sortedness (time 2s -> 14s if using k <= k2)
 (assert (forall ((l0 Int) (h Int) (k Int) (ak Int) (k2 Int) (ak2 Int))
   (=> (and (>= k l0) (< k k2) (< k2 h)
-           (exit l0 h k ak k2 ak2))
+           (exit_pred l0 h k ak k2 ak2))
       (<= ak ak2))))
 
 ; with this condition, should be UNSAT
 ;(assert (forall ((l0 Int) (h Int) (k Int) (ak Int) (k2 Int) (ak2 Int))
-;  (not (exit l0 h l0 ak (+ l0 1) ak2))))
+;  (not (exit_pred l0 h l0 ak (+ l0 1) ak2))))
 
 (check-sat)

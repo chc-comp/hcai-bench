@@ -4,7 +4,7 @@
 
 (declare-fun init (Int Int Int Int Int) Bool) ; l0 h k a[k] z #a0(z)
 (declare-fun outerloop (Int Int Int Int Int Int Int Int) Bool) ; l0 l h k a[k] z #a(z) #a0(z)
-(declare-fun exit (Int Int Int Int Int Int Int) Bool) ; l0 h k a[k] z #a(z) #a0(z)
+(declare-fun exit_pred (Int Int Int Int Int Int Int) Bool) ; l0 h k a[k] z #a(z) #a0(z)
 
 (declare-fun read1 (Int Int Int Int Int Int Int Int) Bool) ; l0 l h k a[k] z #a(z) #a0(z)
 (declare-fun loop (Int Int Int Int Int Int Int Int Int Int Int Int) Bool) ; l0 l h i p b f k a[k] z #a(z) #a0(z)
@@ -35,7 +35,7 @@
 
 (assert (forall ((l0 Int) (l Int) (h Int) (k Int) (ak Int) (z Int) (az Int) (a0z Int))
    (=> (and (outerloop l0 l h k ak z az a0z) (>= l (- h 1)))
-       (exit l0 h k ak z az a0z))))
+       (exit_pred l0 h k ak z az a0z))))
 
 (assert (forall ((l0 Int) (l Int) (h Int) (b Int) (k Int) (ak Int) (z Int) (az Int) (a0z Int))
    (=> (and (read1 l0 l h k ak z az a0z)
@@ -183,6 +183,6 @@
 
 ; Final property
 (assert (forall ((l0 Int) (h Int) (k Int) (ak Int) (z Int) (az Int) (a0z Int))
-  (=> (exit l0 h k ak z az a0z) (= az a0z))))
+  (=> (exit_pred l0 h k ak z az a0z) (= az a0z))))
 
 (check-sat)
